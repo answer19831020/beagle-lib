@@ -1,0 +1,4 @@
+#Mon Oct 03 14:17:27 CEST 2011
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.exe.debug.1615639722=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<environment append\="true" appendContributed\="true">\n<variable delimiter\="\:" name\="PATH" operation\="replace" value\="/usr/local/bin\:/usr/bin\:/bin\:/usr/local/games\:/usr/games"/>\n</environment>\n
+environment/project/cdt.managedbuild.config.gnu.exe.release.764334558=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<environment append\="true" appendContributed\="true">\n<variable delimiter\="\:" name\="PATH" operation\="append" value\="/usr/local/cuda/bin"/>\n</environment>\n

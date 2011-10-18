@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/830/trunk/libhmsbeagle/plugin
+END
+WinSharedLibrary.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/815/trunk/libhmsbeagle/plugin/WinSharedLibrary.h
+END
+Plugin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/796/trunk/libhmsbeagle/plugin/Plugin.cpp
+END
+UnixSharedLibrary.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/800/trunk/libhmsbeagle/plugin/UnixSharedLibrary.cpp
+END
+SharedLibrary.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/789/trunk/libhmsbeagle/plugin/SharedLibrary.h
+END
+Plugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/797/trunk/libhmsbeagle/plugin/Plugin.h
+END
+BeaglePlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/789/trunk/libhmsbeagle/plugin/BeaglePlugin.h
+END
+UnixSharedLibrary.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/830/trunk/libhmsbeagle/plugin/UnixSharedLibrary.h
+END
+LibtoolSharedLibrary.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/800/trunk/libhmsbeagle/plugin/LibtoolSharedLibrary.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/800/trunk/libhmsbeagle/plugin/Makefile.am
+END
+WinSharedLibrary.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/796/trunk/libhmsbeagle/plugin/WinSharedLibrary.cpp
+END

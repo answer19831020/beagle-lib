@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/982/trunk/examples/oddstatetest
+END
+oddstatetest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/787/trunk/examples/oddstatetest/oddstatetest.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/952/trunk/examples/oddstatetest/Makefile.am
+END

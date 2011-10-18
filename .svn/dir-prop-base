@@ -1,0 +1,27 @@
+K 10
+svn:ignore
+V 189
+beagle-lib-1.0.pc
+configure
+Makefile.in
+config.log
+INSTALL
+COPYING
+Makefile
+.config
+config.status
+libtool
+autom4te.cache
+aclocal.m4
+hmsbeagle-1.0.pc
+doc
+.idea
+Beagle-lib.iml
+hmsbeagle-1.pc
+
+K 13
+svn:mergeinfo
+V 58
+/branches/multi-state:409-436
+/branches/scalingAPI:289-297
+END

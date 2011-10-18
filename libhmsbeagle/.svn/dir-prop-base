@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 57
+config.h.in
+Makefile.in
+.deps
+stamp-h1
+config.h
+Makefile
+
+END

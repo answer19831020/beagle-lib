@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1043/trunk/examples/tinytest
+END
+tinytest.Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/202/trunk/examples/tinytest/tinytest.Makefile
+END
+tinytest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1043/trunk/examples/tinytest/tinytest.cpp
+END
+check_lnL_using_BEAST.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/153/trunk/examples/tinytest/check_lnL_using_BEAST.xml
+END
+check_lnL_using_paup.nex
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/584/trunk/examples/tinytest/check_lnL_using_paup.nex
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/952/trunk/examples/tinytest/Makefile.am
+END

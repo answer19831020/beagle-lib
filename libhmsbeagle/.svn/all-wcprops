@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1052/trunk/libhmsbeagle
+END
+beagle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1043/trunk/libhmsbeagle/beagle.cpp
+END
+beagle.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1052/trunk/libhmsbeagle/beagle.h
+END
+BeagleImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/849/trunk/libhmsbeagle/BeagleImpl.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/963/trunk/libhmsbeagle/Makefile.am
+END
+platform.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/904/trunk/libhmsbeagle/platform.h
+END

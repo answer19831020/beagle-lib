@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1015/trunk/libhmsbeagle/CPU
+END
+Precision.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/610/trunk/libhmsbeagle/CPU/Precision.h
+END
+BeagleCPU4StateImpl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/1009/trunk/libhmsbeagle/CPU/BeagleCPU4StateImpl.hpp
+END
+BeagleCPU4StateImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1008/trunk/libhmsbeagle/CPU/BeagleCPU4StateImpl.h
+END
+BeagleCPUPlugin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1000/trunk/libhmsbeagle/CPU/BeagleCPUPlugin.cpp
+END
+EigenDecompositionSquare.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1009/trunk/libhmsbeagle/CPU/EigenDecompositionSquare.hpp
+END
+EigenDecompositionSquare.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1008/trunk/libhmsbeagle/CPU/EigenDecompositionSquare.h
+END
+BeagleCPUPlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/789/trunk/libhmsbeagle/CPU/BeagleCPUPlugin.h
+END
+BeagleCPUImpl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1010/trunk/libhmsbeagle/CPU/BeagleCPUImpl.hpp
+END
+BeagleCPU4StateSSEImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/1009/trunk/libhmsbeagle/CPU/BeagleCPU4StateSSEImpl.h
+END
+BeagleCPUImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/1010/trunk/libhmsbeagle/CPU/BeagleCPUImpl.h
+END
+BeagleCPU4StateSSEImpl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1015/trunk/libhmsbeagle/CPU/BeagleCPU4StateSSEImpl.hpp
+END
+BeagleCPUSSEPlugin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1008/trunk/libhmsbeagle/CPU/BeagleCPUSSEPlugin.cpp
+END
+BeagleCPUOpenMPPlugin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/1000/trunk/libhmsbeagle/CPU/BeagleCPUOpenMPPlugin.cpp
+END
+BeagleCPUSSEPlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/805/trunk/libhmsbeagle/CPU/BeagleCPUSSEPlugin.h
+END
+EigenDecompositionCube.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1009/trunk/libhmsbeagle/CPU/EigenDecompositionCube.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/963/trunk/libhmsbeagle/CPU/Makefile.am
+END
+EigenDecompositionCube.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/1008/trunk/libhmsbeagle/CPU/EigenDecompositionCube.h
+END
+BeagleCPUSSEImpl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1010/trunk/libhmsbeagle/CPU/BeagleCPUSSEImpl.hpp
+END
+BeagleCPUSSEImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1010/trunk/libhmsbeagle/CPU/BeagleCPUSSEImpl.h
+END
+EigenDecomposition.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1009/trunk/libhmsbeagle/CPU/EigenDecomposition.h
+END
+BeagleCPUOpenMPPlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/805/trunk/libhmsbeagle/CPU/BeagleCPUOpenMPPlugin.h
+END
+SSEDefinitions.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/1008/trunk/libhmsbeagle/CPU/SSEDefinitions.h
+END

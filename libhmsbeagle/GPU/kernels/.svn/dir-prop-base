@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 224
+BeagleCUDA_kernels_64.ptx
+Makefile.in
+BeagleCUDA_kernels_48.ptx
+BeagleCUDA_kernels.h
+BeagleCUDA_kernels.ptx
+BeagleCUDA_kernels_4.ptx
+BeagleCUDA_kernels_32.ptx
+Makefile
+BeagleCUDA_kernels_xcode.h
+BeagleCUDA_kernels_xcode.ptx
+
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/kernels
+END
+BeagleOpenCL_kernels.cl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/kernels/BeagleOpenCL_kernels.cl
+END
+kernelsX.cu
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/960/trunk/libhmsbeagle/GPU/kernels/kernelsX.cu
+END
+kernelsAll.cu
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/834/trunk/libhmsbeagle/GPU/kernels/kernelsAll.cu
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/kernels/Makefile.am
+END
+kernels4.cu
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/926/trunk/libhmsbeagle/GPU/kernels/kernels4.cu
+END

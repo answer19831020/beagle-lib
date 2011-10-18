@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1044/trunk/libhmsbeagle/GPU
+END
+OpenCLPlugin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/OpenCLPlugin.cpp
+END
+CUDAPlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/789/trunk/libhmsbeagle/GPU/CUDAPlugin.h
+END
+Precision.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/883/trunk/libhmsbeagle/GPU/Precision.h
+END
+KernelLauncher.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/926/trunk/libhmsbeagle/GPU/KernelLauncher.cpp
+END
+OpenCLPlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/809/trunk/libhmsbeagle/GPU/OpenCLPlugin.h
+END
+KernelLauncher.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/896/trunk/libhmsbeagle/GPU/KernelLauncher.h
+END
+GPUInterfaceCUDA.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1001/trunk/libhmsbeagle/GPU/GPUInterfaceCUDA.cpp
+END
+GPUImplHelper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/888/trunk/libhmsbeagle/GPU/GPUImplHelper.cpp
+END
+GPUInterfaceOpenCL.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/GPUInterfaceOpenCL.cpp
+END
+GPUInterface.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/GPUInterface.h
+END
+BeagleGPUImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/888/trunk/libhmsbeagle/GPU/BeagleGPUImpl.h
+END
+GPUImplHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/888/trunk/libhmsbeagle/GPU/GPUImplHelper.h
+END
+BeagleGPUImpl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/BeagleGPUImpl.hpp
+END
+GPUImplDefs.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1002/trunk/libhmsbeagle/GPU/GPUImplDefs.h
+END
+KernelResource.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/880/trunk/libhmsbeagle/GPU/KernelResource.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/Makefile.am
+END
+CUDAPlugin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/1043/trunk/libhmsbeagle/GPU/CUDAPlugin.cpp
+END
+KernelResource.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/880/trunk/libhmsbeagle/GPU/KernelResource.h
+END
