@@ -27,7 +27,7 @@
  */
 
 ///@TODO: wrap partials, eigen calcs, and transition matrices in a small structs
-//      so that we can flag them. This would this would be helpful for
+//      so that we can flag them. This would be helpful for
 //      implementing:
 //          1. an error-checking version that double-checks (to the extent
 //              possible) that the client is using the API correctly.  This would
