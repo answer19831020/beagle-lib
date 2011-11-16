@@ -449,6 +449,7 @@ BEAGLE_DLLEXPORT int beagleSetPatternWeights(int instance,
                                        const double* inPatternWeights);
     
 
+
 /**
  * @brief Convolve transition probability matrices
  *
@@ -462,8 +463,8 @@ BEAGLE_DLLEXPORT int beagleSetPatternWeights(int instance,
  * @return error code
  */
 BEAGLE_DLLEXPORT int beagleConvolveTransitionMatrices(int instance,
-		                                              const int* probabilityIndices,
-		                                              int count);
+		                             const int* probabilityIndices,
+		                             int count);
 
 /**
  * @brief Calculate a list of transition probability matrices
