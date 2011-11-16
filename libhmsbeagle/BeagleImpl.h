@@ -98,6 +98,9 @@ public:
     virtual int getTransitionMatrix(int matrixIndex,
                                     double* outMatrix) = 0;
 
+	virtual int convolveTransitionMatrices(const int* probabilityIndices,
+										   int count) = 0;
+
     virtual int updateTransitionMatrices(int eigenIndex,
                                          const int* probabilityIndices,
                                          const int* firstDerivativeIndices,

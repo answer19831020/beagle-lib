@@ -689,6 +689,20 @@ int beagleGetTransitionMatrix(int instance,
 	return beagleInstance->getTransitionMatrix(matrixIndex,outMatrix);
 }
 
+int beagleConvolveTransitionMatrices(int instance,
+		const int* probabilityIndices, int count) {
+
+	beagle::BeagleImpl* beagleInstance = beagle::getBeagleInstance(instance);
+
+	if (beagleInstance == NULL) {
+		return BEAGLE_ERROR_UNINITIALIZED_INSTANCE;
+	} else {
+		//TODO: implement
+//		 return beagleInstance->convolveTransitionMatrices(probabilityIndices, count);
+	}
+
+}//END: beagleConvolveTransitionMatrices
+
 int beagleUpdateTransitionMatrices(int instance,
                              int eigenIndex,
                              const int* probabilityIndices,
