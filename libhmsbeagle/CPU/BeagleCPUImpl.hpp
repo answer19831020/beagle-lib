@@ -670,9 +670,9 @@ if (T_PAD != 0) {
 ///////////////////////////
 BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* matrixIndices,
-		                                                          const double* AMatrices,
-		                                                          const double* BMatrices ,
-		                                                          int count) {
+		const double* AMatrices,
+		const double* BMatrices ,
+		int count) {
 
 	int wMatrix;
 
@@ -682,22 +682,17 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* mat
 		float *A = AMatrices + wMatrix * kStateCount;
 		float *B = BMatrices + wMatrix * kStateCount;
 
-			for (int i = 0; i < kStateCount; i++) {
-				for (int j = 0; j < kStateCount; j++) {
+		for (int i = 0; i < kStateCount; i++) {
+			for (int j = 0; j < kStateCount; j++) {
 
-					C[j + kStateCount * i] = 0;
-					for (int k = 0; k < kStateCount; k++) {
+				C[j + kStateCount * i] = 0;
+				for (int k = 0; k < kStateCount; k++) {
 
-						C[j + kStateCount * i] += A[k + kStateCount * i] * B[j + kStateCount * k];
+					C[j + kStateCount * i] += A[k + kStateCount * i] * B[j + kStateCount * k];
 
-					}//END: dot product loop
-				}//END: col loop
-			}//END: row loop
-
-
-
-
-
+				}//END: dot product loop
+			}//END: col loop
+		}//END: row loop
 
 
 	}//END: count loop
