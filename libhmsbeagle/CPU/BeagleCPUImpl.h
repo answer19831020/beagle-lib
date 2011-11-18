@@ -194,6 +194,14 @@ public:
     int getTransitionMatrix(int matrixIndex,
     						double* outMatrix);
 
+    ///////////////////////////
+    //---TODO: Epoch model---//
+    ///////////////////////////
+	int convolveTransitionMatrices(const int* matrixIndices,
+            const double* AMatrices,
+            const double* BMatrices ,
+            int count);
+
     // calculate a transition probability matrices for a given list of node. This will
     // calculate for all categories (and all matrices if more than one is being used).
     //
