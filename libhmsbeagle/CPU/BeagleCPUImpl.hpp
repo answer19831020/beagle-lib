@@ -694,7 +694,6 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* mat
 			}//END: col loop
 		}//END: row loop
 
-
 	}//END: count loop
 
 	return BEAGLE_SUCCESS;
