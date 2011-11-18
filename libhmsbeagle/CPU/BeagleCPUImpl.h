@@ -197,9 +197,9 @@ public:
     ///////////////////////////
     //---TODO: Epoch model---//
     ///////////////////////////
-	int convolveTransitionMatrices(const int* matrixIndices,
-            const double* AMatrices,
-            const double* BMatrices ,
+	int convolveTransitionMatrices( const int* firstIndices,
+            const int* secondIndices,
+            const int* resultIndices,
             int count);
 
     // calculate a transition probability matrices for a given list of node. This will

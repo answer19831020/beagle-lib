@@ -669,18 +669,18 @@ if (T_PAD != 0) {
 //---TODO: Epoch model---//
 ///////////////////////////
 BEAGLE_CPU_TEMPLATE
-int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* matrixIndices,
-		const double* AMatrices,
-		const double* BMatrices ,
+int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices( const int* firstIndices,
+		const int* secondIndices,
+		const int* resultIndices,
 		int count) {
 
 	int wMatrix;
 
 	for (wMatrix = 0; wMatrix < count; wMatrix++) {
 
-		float *C = gTransitionMatrices + matrixIndices[wMatrix];
-		float *A = AMatrices + wMatrix * kStateCount;
-		float *B = BMatrices + wMatrix * kStateCount;
+		float *C = gTransitionMatrices + resultIndices[wMatrix];
+		float *A = gTransitionMatrices + firstIndices[wMatrix];
+		float *B = gTransitionMatrices + secondIndices[wMatrix];
 
 		for (int i = 0; i < kStateCount; i++) {
 			for (int j = 0; j < kStateCount; j++) {
