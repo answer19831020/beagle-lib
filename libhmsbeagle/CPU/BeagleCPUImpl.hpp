@@ -679,17 +679,17 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 
 	for (wMatrix = 0; wMatrix < count; wMatrix++) {
 
-		REALTYPE *C = gTransitionMatrices + resultIndices[wMatrix];
-		REALTYPE *A = gTransitionMatrices + firstIndices[wMatrix];
-		REALTYPE *B = gTransitionMatrices + secondIndices[wMatrix];
+		REALTYPE **C = gTransitionMatrices + resultIndices[wMatrix];
+		REALTYPE **A = gTransitionMatrices + firstIndices[wMatrix];
+		REALTYPE **B = gTransitionMatrices + secondIndices[wMatrix];
 
 		for (int i = 0; i < kStateCount; i++) {
 			for (int j = 0; j < kStateCount; j++) {
 
-				C[j + kStateCount * i] = 0;
+				C[i][j] = 0;
 				for (int k = 0; k < kStateCount; k++) {
 
-					C[j + kStateCount * i] += A[k + kStateCount * i] * B[j + kStateCount * k];
+					C[i][j] += A[i][k] * B[k][j];
 
 				}//END: dot product loop
 			}//END: col loop
