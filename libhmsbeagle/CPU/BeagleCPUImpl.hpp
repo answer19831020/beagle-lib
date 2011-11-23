@@ -668,6 +668,7 @@ if (T_PAD != 0) {
 ///////////////////////////
 //---TODO: Epoch model---//
 ///////////////////////////
+
 BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices( const int* firstIndices,
 		const int* secondIndices,

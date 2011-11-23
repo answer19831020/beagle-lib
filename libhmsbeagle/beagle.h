@@ -452,6 +452,7 @@ BEAGLE_DLLEXPORT int beagleSetPatternWeights(int instance,
 ///////////////////////////
 //---TODO: Epoch model---//
 ///////////////////////////
+
 /**
  * @brief Convolve lists of transition probability matrices
  *
