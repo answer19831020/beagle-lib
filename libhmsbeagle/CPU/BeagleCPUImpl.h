@@ -197,6 +197,7 @@ public:
     ///////////////////////////
     //---TODO: Epoch model---//
     ///////////////////////////
+
 	int convolveTransitionMatrices( const int* firstIndices,
             const int* secondIndices,
             const int* resultIndices,

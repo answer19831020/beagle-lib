@@ -102,8 +102,10 @@ public:
     //---TODO: Epoch model---//
     ///////////////////////////
 
-//	virtual int convolveTransitionMatrices(const int* probabilityIndices,
-//										   int count) = 0;
+//	virtual int convolveTransitionMatrices(const int* firstIndices,
+//	                                       int* secondIndices,
+//	                                       const int* resultIndices,
+//	                                       int count) = 0;
 
     virtual int updateTransitionMatrices(int eigenIndex,
                                          const int* probabilityIndices,

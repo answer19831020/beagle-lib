@@ -1031,6 +1031,20 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::setTransitionMatrices(const int* matrixIn
     return BEAGLE_SUCCESS;
 }
 
+///////////////////////////
+//---TODO: Epoch model---//
+///////////////////////////
+
+BEAGLE_GPU_TEMPLATE
+int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* firstIndices,
+                               const int* secondIndices,
+                               const int* resultIndices,
+                               int count) {
+
+	 return BEAGLE_SUCCESS;
+}
+
+
 BEAGLE_GPU_TEMPLATE
 int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::updateTransitionMatrices(int eigenIndex,
                                             const int* probabilityIndices,
