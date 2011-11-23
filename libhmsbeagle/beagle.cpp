@@ -693,8 +693,11 @@ int beagleGetTransitionMatrix(int instance,
 //---TODO: Epoch model---//
 ///////////////////////////
 
-int beagleConvolveTransitionMatrices(int instance, int* firstIndices,
-		int* secondIndices, int* resultIndices, int count) {
+int beagleConvolveTransitionMatrices(int instance,
+		                             const int* firstIndices,
+		                             const int* secondIndices,
+		                             const int* resultIndices,
+		                             const int count) {
 
 	beagle::BeagleImpl* beagleInstance = beagle::getBeagleInstance(instance);
 

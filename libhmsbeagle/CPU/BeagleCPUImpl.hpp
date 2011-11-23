@@ -670,10 +670,10 @@ if (T_PAD != 0) {
 ///////////////////////////
 
 BEAGLE_CPU_TEMPLATE
-int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices( const int* firstIndices,
-		const int* secondIndices,
-		const int* resultIndices,
-		int count) {
+int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* firstIndices,
+		                                                          const int* secondIndices,
+		                                                          const int* resultIndices,
+		                                                          int count) {
 
 	int wMatrix;
 

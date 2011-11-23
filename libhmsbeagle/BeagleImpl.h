@@ -103,7 +103,7 @@ public:
     ///////////////////////////
 
 	virtual int convolveTransitionMatrices(const int* firstIndices,
-	                                       int* secondIndices,
+			                               const int* secondIndices,
 	                                       const int* resultIndices,
 	                                       int count) = 0;
 
