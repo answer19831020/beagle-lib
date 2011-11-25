@@ -705,8 +705,8 @@ int beagleConvolveTransitionMatrices(int instance,
 		return BEAGLE_ERROR_UNINITIALIZED_INSTANCE;
 	} else {
 
-//		return beagleInstance->convolveTransitionMatrices(firstIndices,
-//				secondIndices, resultIndices, count);
+		return beagleInstance->convolveTransitionMatrices(firstIndices,
+				secondIndices, resultIndices, count);
 
 	}
 
