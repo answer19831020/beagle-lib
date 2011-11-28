@@ -1,4 +1,4 @@
-#Wed Nov 16 19:27:29 GMT+01:00 2011
+#Mon Nov 28 13:56:03 CET 2011
 eclipse.preferences.version=1
 environment/project/cdt.managedbuild.config.gnu.exe.debug.160688497=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<environment append\="true" appendContributed\="true">\n<variable delimiter\="\:" name\="PATH" operation\="replace" value\="/usr/local/bin\:/usr/bin\:/bin"/>\n</environment>\n
 environment/project/cdt.managedbuild.config.gnu.exe.release.1805570733=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<environment append\="true" appendContributed\="true">\n<variable delimiter\="\:" name\="PATH" operation\="append" value\="/usr/local/cuda/bin"/>\n</environment>\n
