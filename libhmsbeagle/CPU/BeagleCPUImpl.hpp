@@ -677,6 +677,8 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 
 	int wMatrix;
 
+	fprintf(stderr,"Debug: Epoch Model \n");
+
 	for (wMatrix = 0; wMatrix < count; wMatrix++) {
 
 		REALTYPE* C = gTransitionMatrices[resultIndices[wMatrix]];
