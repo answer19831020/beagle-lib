@@ -37,16 +37,26 @@
 
 extern "C" {
 
-__global__ void kernelMatrixConvolution(float* dMatrices,
-								        unsigned int* listC,
-								        float* A,
-								        float* B,
-								        int totalMatrix
+//__global__ void kernelTest(REAL* dMatrices) {
+//
+//
+//
+//
+//
+//}//END: kernelTest
+
+__global__ void kernelMatrixConvolution(REAL* dMatrices,
+								        unsigned int* list,
+//								        float* A,
+//								        float* B,
+								        int totalCount
 								        ) {
 
-	__shared__ float* C;
+	__shared__ REAL* A;
+	__shared__ REAL* B;
+	__shared__ REAL* C;
 
-	int wMatrix = blockIdx.x % totalMatrix;
+	int wMatrix = blockIdx.x % totalCount;
 
 	// Block index
 	int bx = blockIdx.x;
@@ -58,10 +68,12 @@ __global__ void kernelMatrixConvolution(float* dMatrices,
 
 	int BLOCKS = gridDim.y;
 
-	// dMatrices pointer to the beginning of a large block on memory that can hold many, many matrices
-	// listC[wMatrix] is the offset in this memory buffer for matrix # 'wMatrix'
+	// dMatrices pointer to the beginning of a large block on memory that can hold many matrices
+	// list[wMatrix] is the offset in this memory buffer for matrix # 'wMatrix'
 	if (tx == 0 && ty == 0) {
-		C = dMatrices + listC[wMatrix];
+		A = dMatrices + list[wMatrix];
+		B = dMatrices + list[wMatrix + totalCount];
+		C = dMatrices + list[wMatrix + totalCount*2];
 	}
 
 	__syncthreads();

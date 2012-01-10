@@ -1037,12 +1037,74 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::setTransitionMatrices(const int* matrixIn
 
 BEAGLE_GPU_TEMPLATE
 int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* firstIndices,
-                                                                  const int* secondIndices,
-                                                                  const int* resultIndices,
-                                                                  int count) {
+		const int* secondIndices,
+		const int* resultIndices,
+		int count) {
 
-	 return BEAGLE_SUCCESS;
-}
+#ifdef BEAGLE_DEBUG_FLOW
+	   fprintf(stderr, "\t Entering BeagleGPUImpl::convolveTransitionMatrices \n");
+#endif
+
+	if (count > 0) {
+
+		int totalCount = count * kCategoryCount;
+
+printf("%i", totalCount);
+printf("\n");
+
+printf("%i", kCategoryCount);
+printf("\n");
+
+		int ptrIndex = 0;
+		int indexOffset = kMatrixSize * kCategoryCount;
+		int categoryOffset = kMatrixSize;
+
+#ifdef CUDA
+
+		for (int i = 0; i < count; i++) {
+			for (int j = 0; j < kCategoryCount; j++) {
+
+				hPtrQueue[ptrIndex] = firstIndices[i] * indexOffset + j * categoryOffset;
+				hPtrQueue[ptrIndex + totalCount] = secondIndices[i] * indexOffset + j * categoryOffset;
+				hPtrQueue[ptrIndex + totalCount*2] = resultIndices[i] * indexOffset + j * categoryOffset;
+				ptrIndex++;
+
+			}//END: kCategoryCount loop
+		}//END: matrices count loop
+
+		gpu->MemcpyHostToDevice(dPtrQueue, hPtrQueue, sizeof(unsigned int) * totalCount * 3);
+
+		kernels->convolveTransitionMatrices(dMatrices[0], dPtrQueue, totalCount);
+
+		for (int i = 0; i < (kMatrixCount * kCategoryCount * 3); i++) {
+			printf("%d: %d \n", i, hPtrQueue[i]);
+		}
+		printf("\n");
+
+
+
+
+
+
+
+//		size = totalMatrix * PADDED_STATE_COUNT * PADDED_STATE_COUNT;
+//		mem_size = size * sizeof(float);
+//		float* h_Matrices = (float*) malloc(mem_size);
+//gpu->MemcpyDeviceToHost();
+
+
+
+
+	}//END: count check
+
+#endif
+
+#ifdef BEAGLE_DEBUG_FLOW
+	   fprintf(stderr, "\t Leaving BeagleGPUImpl::convolveTransitionMatrices \n");
+#endif
+
+	return BEAGLE_SUCCESS;
+}//END: convolveTransitionMatrices
 
 
 BEAGLE_GPU_TEMPLATE
