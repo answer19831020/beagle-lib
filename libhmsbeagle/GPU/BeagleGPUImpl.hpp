@@ -1082,17 +1082,7 @@ printf("\n");
 		printf("\n");
 
 
-
-
-
-
-
-//		size = totalMatrix * PADDED_STATE_COUNT * PADDED_STATE_COUNT;
-//		mem_size = size * sizeof(float);
-//		float* h_Matrices = (float*) malloc(mem_size);
-//gpu->MemcpyDeviceToHost();
-
-
+		//
 
 
 	}//END: count check

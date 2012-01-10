@@ -37,14 +37,6 @@
 
 extern "C" {
 
-//__global__ void kernelTest(REAL* dMatrices) {
-//
-//
-//
-//
-//
-//}//END: kernelTest
-
 __global__ void kernelMatrixConvolution(REAL* dMatrices,
 								        unsigned int* list,
 //								        float* A,

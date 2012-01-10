@@ -270,28 +270,31 @@ void KernelLauncher::LoadKernels() {
 
 #ifdef CUDA
 
+///////////////////////////
+//---TODO: Epoch Model---//
+///////////////////////////
+
 void KernelLauncher::convolveTransitionMatrices(GPUPtr dMatrices,
-                                      GPUPtr dPtrQueue,
-                                      unsigned int totalMatrix) {
+		                                        GPUPtr dPtrQueue,
+		                                        unsigned int totalMatrix) {
 
 #ifdef BEAGLE_DEBUG_FLOW
-    fprintf(stderr, "\t\tEntering KernelLauncher::ConvolveMatrices \n");
+	fprintf(stderr, "\t \t Entering KernelLauncher::ConvolveMatrices \n");
 #endif
 
-   bgTransitionProbabilitiesGrid.x *= totalMatrix;
+	bgTransitionProbabilitiesGrid.x *= totalMatrix;
 
-   int parameterCountV = 2;
-   int totalParameterCount = 3;
+	int parameterCountV = 2;
+	int totalParameterCount = 3;
 
-    gpu->LaunchKernel(fMatrixConvolution,
-                               bgTransitionProbabilitiesBlock, bgTransitionProbabilitiesGrid,
-                               parameterCountV, totalParameterCount,
-                               dMatrices, dPtrQueue, totalMatrix);
+	gpu->LaunchKernel(fMatrixConvolution, bgTransitionProbabilitiesBlock,
+			bgTransitionProbabilitiesGrid, parameterCountV,
+			totalParameterCount, dMatrices, dPtrQueue, totalMatrix);
 
-    bgTransitionProbabilitiesGrid.x /= totalMatrix; // Reset value
+	bgTransitionProbabilitiesGrid.x /= totalMatrix; // Reset value
 
 #ifdef BEAGLE_DEBUG_FLOW
-    fprintf(stderr, "\t\tLeaving  KernelLauncher::GetTransitionProbabilitiesSquare\n");
+	fprintf(stderr, "\t \t Leaving  KernelLauncher::ConvolveMatrices \n");
 #endif
 }//END: ConvolveMatrices
 
