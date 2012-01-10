@@ -669,35 +669,49 @@ if (T_PAD != 0) {
 //---TODO: Epoch model---//
 ///////////////////////////
 
+//TODO: move to EigenDecompositionSquare
+
 BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* firstIndices,
-		                                                          const int* secondIndices,
-		                                                          const int* resultIndices,
-		                                                          int count) {
+		const int* secondIndices,
+		const int* resultIndices,
+		int count) {
 
-	int wMatrix;
+#ifdef BEAGLE_DEBUG_FLOW
+	   fprintf(stderr, "\t Entering BeagleCPUImpl::convolveTransitionMatrices \n");
+#endif
 
-	fprintf(stderr,"Debug: Epoch Model \n");
+	for (int u = 0; u < count; u++) {
 
-	for (wMatrix = 0; wMatrix < count; wMatrix++) {
+		REALTYPE* C = gTransitionMatrices[resultIndices[u]];
+		REALTYPE* A = gTransitionMatrices[firstIndices[u]];
+		REALTYPE* B = gTransitionMatrices[secondIndices[u]];
 
-		REALTYPE* C = gTransitionMatrices[resultIndices[wMatrix]];
-		REALTYPE* A = gTransitionMatrices[firstIndices[wMatrix]];
-		REALTYPE* B = gTransitionMatrices[secondIndices[wMatrix]];
+		int n = 0;
+		for (int l = 0; l < kCategoryCount; l++) {
+			for (int i = 0; i < kStateCount; i++) {
+				for (int j = 0; j < kStateCount; j++) {
 
-		for (int i = 0; i < kStateCount; i++) {
-			for (int j = 0; j < kStateCount; j++) {
+					REALTYPE sum = 0.0;
+					for (int k = 0; k < kStateCount; k++)
 
-				C[j + kStateCount * i] = 0;
-				for (int k = 0; k < kStateCount; k++) {
+					sum += A[k + kStateCount * i] * B[j + kStateCount * k];
+					C[n] = sum;
+					n++;
 
-					C[j + kStateCount * i] += A[k + kStateCount * i] * B[j + kStateCount * k];
+				}//END: j loop
 
-				}//END: dot product loop
-			}//END: col loop
-		}//END: row loop
+//				if (T_PAD != 0) {
+//					n += T_PAD;
+//				}//END: padding check
 
-	}//END: count loop
+			}//END: i loop
+		}//END: l loop
+	}//END: u loop
+
+#ifdef BEAGLE_DEBUG_FLOW
+	   fprintf(stderr, "\t Leaving BeagleCPUImpl::convolveTransitionMatrices \n");
+#endif
 
 	return BEAGLE_SUCCESS;
 }//END: convolveTransitionMatrices
