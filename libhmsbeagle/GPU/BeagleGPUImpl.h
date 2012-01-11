@@ -211,7 +211,7 @@ public:
 	int convolveTransitionMatrices(const int* firstIndices,
                                    const int* secondIndices,
                                    const int* resultIndices,
-                                   int count);
+                                   int matrixCount);
 
     int updateTransitionMatrices(int eigenIndex,
                                  const int* probabilityIndices,

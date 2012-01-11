@@ -24,6 +24,10 @@
 
 #include "libhmsbeagle/GPU/GPUImplDefs.h"
 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 #define DETERMINE_INDICES() \
     int state = threadIdx.x; \
     int patIdx = threadIdx.y; \
@@ -39,68 +43,108 @@ extern "C" {
 
 __global__ void kernelMatrixConvolution(REAL* dMatrices,
 								        unsigned int* list,
-//								        float* A,
-//								        float* B,
-								        int totalCount
+								        int totalMatrix
 								        ) {
+	   __shared__ REAL* A;
+	   __shared__ REAL* B;
+	   __shared__ REAL* C;
 
-	__shared__ REAL* A;
-	__shared__ REAL* B;
-	__shared__ REAL* C;
+	    int wMatrix = blockIdx.x % totalMatrix;
 
-	int wMatrix = blockIdx.x % totalCount;
+	    // Block index
+	    int bx = blockIdx.x / totalMatrix;
+	    int by = blockIdx.y;
 
-	// Block index
-	int bx = blockIdx.x;
-	int by = blockIdx.y;
+	    // Thread index
+	    int tx = threadIdx.x;
+	    int ty = threadIdx.y;
+	    int BLOCKS = gridDim.y;
 
-	// Thread index
-	int tx = threadIdx.x;
-	int ty = threadIdx.y;
+	    if (tx == 0 && ty == 0) {
 
-	int BLOCKS = gridDim.y;
+	    	A = dMatrices + list[wMatrix]; // Non-coalescent read
+	    	B = dMatrices + list[wMatrix + totalMatrix]; // Non-coalescent read
+	    	C = dMatrices + list[wMatrix + totalMatrix*2]; // Non-coalescent read
 
-	// dMatrices pointer to the beginning of a large block on memory that can hold many matrices
-	// list[wMatrix] is the offset in this memory buffer for matrix # 'wMatrix'
-	if (tx == 0 && ty == 0) {
-		A = dMatrices + list[wMatrix];
-		B = dMatrices + list[wMatrix + totalCount];
-		C = dMatrices + list[wMatrix + totalCount*2];
-	}
+	    }
 
-	__syncthreads();
+	    __syncthreads();
 
-	int a = PADDED_STATE_COUNT * MULTIPLY_BLOCK_SIZE * by;
-	int aStep = MULTIPLY_BLOCK_SIZE;
+	    const int EDGE = PADDED_STATE_COUNT - (BLOCKS - 1) * MULTIPLY_BLOCK_SIZE;
 
-	int b = MULTIPLY_BLOCK_SIZE * bx;
-	int bStep = MULTIPLY_BLOCK_SIZE * PADDED_STATE_COUNT;
+	    // Step size used to iterate through the sub-matrices of A
+	    int aStep = MULTIPLY_BLOCK_SIZE;
 
-	double Csub = 0;
+	    // Step size used to iterate through the sub-matrices of B
+	    int bStep = MULTIPLY_BLOCK_SIZE * PADDED_STATE_COUNT;
 
-	__shared__ double As[MULTIPLY_BLOCK_SIZE][MULTIPLY_BLOCK_SIZE];
-	__shared__ double Bs[MULTIPLY_BLOCK_SIZE][MULTIPLY_BLOCK_SIZE];
+	    // Csub is used to store the element of the block sub-matrix
+	    // that is computed by the thread
+	    REAL Csub = 0;
 
-	for (int i = 0; i < BLOCKS; i++) {
+	    int a = PADDED_STATE_COUNT * MULTIPLY_BLOCK_SIZE * by;
+	    int b = MULTIPLY_BLOCK_SIZE * bx;
 
-		As[ty][tx] = A[a + PADDED_STATE_COUNT * ty + tx];
-		Bs[ty][tx] = B[b + PADDED_STATE_COUNT * ty + tx];
+	    __shared__ REAL As[MULTIPLY_BLOCK_SIZE][MULTIPLY_BLOCK_SIZE];
+	    __shared__ REAL Bs[MULTIPLY_BLOCK_SIZE][MULTIPLY_BLOCK_SIZE];
 
-		__syncthreads();
+	    for (int i = 0; i < BLOCKS - 1; i++) {
 
-		for (int k = 0; k < MULTIPLY_BLOCK_SIZE; k++) {
-			Csub += As[ty][k] * Bs[k][tx];
-		}
+	        As[ty][tx] = A[a + PADDED_STATE_COUNT * ty + tx];
+	        Bs[ty][tx] = B[b + PADDED_STATE_COUNT * ty + tx];
 
-		__syncthreads();
+	        __syncthreads();
 
-		a += aStep;
-		b += bStep;
-	}//END: sub-matrices loop
+	        for (int k = 0; k < MULTIPLY_BLOCK_SIZE; ++k)
+	            Csub += As[ty][k]  * Bs[k][tx];
 
-	// Write Csub (shared memory) to C (global memory)
-	int c = PADDED_STATE_COUNT * MULTIPLY_BLOCK_SIZE * by + MULTIPLY_BLOCK_SIZE * bx;
-	C[c + PADDED_STATE_COUNT * ty + tx] = Csub;
+	        __syncthreads();
+
+	        a += aStep;
+	        b += bStep;
+	    }//END: BLOCKS loop
+
+	    // Last block is too long
+	    if (tx < EDGE && ty < EDGE) {
+
+	#ifndef KERNEL_PRINT_ENABLED
+	        __syncthreads();
+	#endif
+
+	        As[ty][tx] = A[a + PADDED_STATE_COUNT * ty + tx];
+	        Bs[ty][tx] = B[b + PADDED_STATE_COUNT * ty + tx];
+
+	    } else {
+
+	        As[ty][tx] = 0;
+	        Bs[ty][tx] = 0;
+
+	    }//END: EDGE check
+
+	    __syncthreads();
+
+	    for (int k = 0; k < EDGE; k++) {
+	        Csub += As[ty][k] *  Bs[k][tx];
+	    }
+
+	    __syncthreads();
+
+	    // Write the block sub-matrix to device memory;
+	    // each thread writes one element
+
+	    if ((tx < EDGE || bx < BLOCKS - 1) && (ty < EDGE || by < BLOCKS - 1)) { // It's OK to write
+	        if (Csub < 0) {
+
+	        	C[PADDED_STATE_COUNT* MULTIPLY_BLOCK_SIZE * by + MULTIPLY_BLOCK_SIZE * bx +
+	              PADDED_STATE_COUNT * ty + tx] = 0;
+
+	        } else {
+
+	        	C[PADDED_STATE_COUNT* MULTIPLY_BLOCK_SIZE * by + MULTIPLY_BLOCK_SIZE * bx +
+	              PADDED_STATE_COUNT * ty + tx] = Csub;
+
+	        }//END: Csub check
+	    }//END: EDGE check
 
 }//END: kernelMatrixConvolution
 

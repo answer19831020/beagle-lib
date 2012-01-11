@@ -109,9 +109,9 @@ public:
 #ifdef CUDA
 
 
-    void convolveTransitionMatrices(GPUPtr dMatrices,
+    void ConvolveTransitionMatrices(GPUPtr dMatrices,
                           GPUPtr dPtrQueue,
-                          unsigned int totalMatrix);
+                          unsigned int totalMatrixCount);
 
     void GetTransitionProbabilitiesSquare(GPUPtr dMatrices,
                                           GPUPtr dPtrQueue,

@@ -1039,21 +1039,15 @@ BEAGLE_GPU_TEMPLATE
 int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* firstIndices,
 		const int* secondIndices,
 		const int* resultIndices,
-		int count) {
+		int matrixCount) {
 
 #ifdef BEAGLE_DEBUG_FLOW
-	   fprintf(stderr, "\t Entering BeagleGPUImpl::convolveTransitionMatrices \n");
+	fprintf(stderr, "\t Entering BeagleGPUImpl::convolveTransitionMatrices \n");
 #endif
 
-	if (count > 0) {
+	if (matrixCount > 0) {
 
-		int totalCount = count * kCategoryCount;
-
-printf("%i", totalCount);
-printf("\n");
-
-printf("%i", kCategoryCount);
-printf("\n");
+		int totalCount = matrixCount * kCategoryCount;
 
 		int ptrIndex = 0;
 		int indexOffset = kMatrixSize * kCategoryCount;
@@ -1061,12 +1055,13 @@ printf("\n");
 
 #ifdef CUDA
 
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < matrixCount; i++) {
 			for (int j = 0; j < kCategoryCount; j++) {
 
 				hPtrQueue[ptrIndex] = firstIndices[i] * indexOffset + j * categoryOffset;
 				hPtrQueue[ptrIndex + totalCount] = secondIndices[i] * indexOffset + j * categoryOffset;
 				hPtrQueue[ptrIndex + totalCount*2] = resultIndices[i] * indexOffset + j * categoryOffset;
+
 				ptrIndex++;
 
 			}//END: kCategoryCount loop
@@ -1074,23 +1069,14 @@ printf("\n");
 
 		gpu->MemcpyHostToDevice(dPtrQueue, hPtrQueue, sizeof(unsigned int) * totalCount * 3);
 
-		kernels->convolveTransitionMatrices(dMatrices[0], dPtrQueue, totalCount);
-
-		for (int i = 0; i < (kMatrixCount * kCategoryCount * 3); i++) {
-			printf("%d: %d \n", i, hPtrQueue[i]);
-		}
-		printf("\n");
-
-
-		//
-
+		kernels->ConvolveTransitionMatrices(dMatrices[0], dPtrQueue, totalCount);
 
 	}//END: count check
 
 #endif
 
 #ifdef BEAGLE_DEBUG_FLOW
-	   fprintf(stderr, "\t Leaving BeagleGPUImpl::convolveTransitionMatrices \n");
+	fprintf(stderr, "\t Leaving BeagleGPUImpl::convolveTransitionMatrices \n");
 #endif
 
 	return BEAGLE_SUCCESS;
