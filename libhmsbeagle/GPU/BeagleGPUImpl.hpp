@@ -1045,7 +1045,16 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* fir
 	fprintf(stderr, "\t Entering BeagleGPUImpl::convolveTransitionMatrices \n");
 #endif
 
+	int returnCode = BEAGLE_SUCCESS;
+
 	if (matrixCount > 0) {
+
+		for(int u = 0; u < matrixCount; u++) {
+			if(firstIndices[u] == resultIndices[u] || secondIndices[u] == resultIndices[u]) {
+				fprintf(stderr, "In-place convolution is not allowed \n");
+				returnCode = BEAGLE_ERROR_GENERAL;
+			}//END: overwrite check
+		}//END: u loop
 
 		int totalMatrixCount = matrixCount * kCategoryCount;
 
@@ -1073,13 +1082,12 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* fir
 
 	}//END: count check
 
-#endif
-
+#endif// END: if CUDA
 #ifdef BEAGLE_DEBUG_FLOW
 	fprintf(stderr, "\t Leaving BeagleGPUImpl::convolveTransitionMatrices \n");
 #endif
 
-	return BEAGLE_SUCCESS;
+	return returnCode;
 }//END: convolveTransitionMatrices
 
 
