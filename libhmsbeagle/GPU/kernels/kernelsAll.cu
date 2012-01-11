@@ -43,16 +43,16 @@ extern "C" {
 
 __global__ void kernelMatrixConvolution(REAL* dMatrices,
 								        unsigned int* list,
-								        int totalMatrix
+								        int totalMatrixCount
 								        ) {
 	   __shared__ REAL* A;
 	   __shared__ REAL* B;
 	   __shared__ REAL* C;
 
-	    int wMatrix = blockIdx.x % totalMatrix;
+	    int wMatrix = blockIdx.x % totalMatrixCount;
 
 	    // Block index
-	    int bx = blockIdx.x / totalMatrix;
+	    int bx = blockIdx.x / totalMatrixCount;
 	    int by = blockIdx.y;
 
 	    // Thread index
@@ -63,8 +63,8 @@ __global__ void kernelMatrixConvolution(REAL* dMatrices,
 	    if (tx == 0 && ty == 0) {
 
 	    	A = dMatrices + list[wMatrix]; // Non-coalescent read
-	    	B = dMatrices + list[wMatrix + totalMatrix]; // Non-coalescent read
-	    	C = dMatrices + list[wMatrix + totalMatrix*2]; // Non-coalescent read
+	    	B = dMatrices + list[wMatrix + totalMatrixCount]; // Non-coalescent read
+	    	C = dMatrices + list[wMatrix + totalMatrixCount*2]; // Non-coalescent read
 
 	    }
 

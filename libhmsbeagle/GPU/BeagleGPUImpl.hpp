@@ -1047,7 +1047,7 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* fir
 
 	if (matrixCount > 0) {
 
-		int totalCount = matrixCount * kCategoryCount;
+		int totalMatrixCount = matrixCount * kCategoryCount;
 
 		int ptrIndex = 0;
 		int indexOffset = kMatrixSize * kCategoryCount;
@@ -1059,17 +1059,17 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* fir
 			for (int j = 0; j < kCategoryCount; j++) {
 
 				hPtrQueue[ptrIndex] = firstIndices[i] * indexOffset + j * categoryOffset;
-				hPtrQueue[ptrIndex + totalCount] = secondIndices[i] * indexOffset + j * categoryOffset;
-				hPtrQueue[ptrIndex + totalCount*2] = resultIndices[i] * indexOffset + j * categoryOffset;
+				hPtrQueue[ptrIndex + totalMatrixCount] = secondIndices[i] * indexOffset + j * categoryOffset;
+				hPtrQueue[ptrIndex + totalMatrixCount*2] = resultIndices[i] * indexOffset + j * categoryOffset;
 
 				ptrIndex++;
 
 			}//END: kCategoryCount loop
 		}//END: matrices count loop
 
-		gpu->MemcpyHostToDevice(dPtrQueue, hPtrQueue, sizeof(unsigned int) * totalCount * 3);
+		gpu->MemcpyHostToDevice(dPtrQueue, hPtrQueue, sizeof(unsigned int) * totalMatrixCount * 3);
 
-		kernels->ConvolveTransitionMatrices(dMatrices[0], dPtrQueue, totalCount);
+		kernels->ConvolveTransitionMatrices(dMatrices[0], dPtrQueue, totalMatrixCount);
 
 	}//END: count check
 
