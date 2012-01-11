@@ -675,13 +675,13 @@ BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* firstIndices,
 		const int* secondIndices,
 		const int* resultIndices,
-		int count) {
+		int matrixCount) {
 
 #ifdef BEAGLE_DEBUG_FLOW
 	fprintf(stderr, "\t Entering BeagleCPUImpl::convolveTransitionMatrices \n");
 #endif
 
-	for (int u = 0; u < count; u++) {
+	for (int u = 0; u < matrixCount; u++) {
 
 		REALTYPE* C = gTransitionMatrices[resultIndices[u]];
 		REALTYPE* A = gTransitionMatrices[firstIndices[u]];
