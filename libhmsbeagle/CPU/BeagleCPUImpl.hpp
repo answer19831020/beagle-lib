@@ -681,59 +681,72 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 	fprintf(stderr, "\t Entering BeagleCPUImpl::convolveTransitionMatrices \n");
 #endif
 
+	int returnCode = BEAGLE_SUCCESS;
+
 	for (int u = 0; u < matrixCount; u++) {
 
-		REALTYPE* C = gTransitionMatrices[resultIndices[u]];
-		REALTYPE* A = gTransitionMatrices[firstIndices[u]];
-		REALTYPE* B = gTransitionMatrices[secondIndices[u]];
+		if(firstIndices[u] == resultIndices[u] || secondIndices[u] == resultIndices[u]) {
+			fprintf(stderr, "In-place convolution is not allowed \n");
+			returnCode = BEAGLE_ERROR_GENERAL;
+		}//END: overwrite check
 
-		int n = 0;
-		for (int l = 0; l < kCategoryCount; l++) {
+			REALTYPE* C = gTransitionMatrices[resultIndices[u]];
+			REALTYPE* A = gTransitionMatrices[firstIndices[u]];
+			REALTYPE* B = gTransitionMatrices[secondIndices[u]];
 
-			for (int i = 0; i < kStateCount; i++) {
-				for (int j = 0; j < kStateCount; j++) {
+			int n = 0;
+			for (int l = 0; l < kCategoryCount; l++) {
 
-					REALTYPE sum = 0.0;
-					for (int k = 0; k < kStateCount; k++)
+				for (int i = 0; i < kStateCount; i++) {
+					for (int j = 0; j < kStateCount; j++) {
 
-					sum += A[k + kTransPaddedStateCount * i] * B[j + kTransPaddedStateCount * k];
-					C[n] = sum;
-					n++;
+						REALTYPE sum = 0.0;
+						for (int k = 0; k < kStateCount; k++)
 
-				}//END: j loop
+						sum += A[k + kTransPaddedStateCount * i] * B[j + kTransPaddedStateCount * k];
+						C[n] = sum;
+						n++;
 
-				if (T_PAD != 0) {
-					n += T_PAD;
-				}//END: padding check
+					}//END: j loop
 
-			}//END: i loop
-		}//END: l loop
+					if (T_PAD != 0) {
 
-		///////////////
-		//		for (int i = 0; i < kStateCount; i++) {
-		//			printf("| ");
-		//			for (int j = 0; j < kStateCount; j++)
-		//			printf("%f ", A[j + i * kTransPaddedStateCount]);
-		//			printf("|\n");
-		//		}
-		//		printf("\n");
-		//
-		//		for (int i = 0; i < kStateCount; i++) {
-		//			printf("| ");
-		//			for (int j = 0; j < kStateCount; j++)
-		//			printf("%f ", B[j + i * kTransPaddedStateCount]);
-		//			printf("|\n");
-		//		}
-		//		printf("\n");
-		//
-		//		for (int i = 0; i < kStateCount; i++) {
-		//			printf("| ");
-		//			for (int j = 0; j < kStateCount; j++)
-		//			printf("%f ", C[j + i * kTransPaddedStateCount]);
-		//			printf("|\n");
-		//		}
-		//		printf("\n");
-		////////////////
+//						A[n] = 1.0;
+//						B[n] = 1.0;
+						C[n] = 1.0;
+
+						n += T_PAD;
+
+					}//END: padding check
+
+				}//END: i loop
+			}//END: l loop
+
+			///////////////
+//					for (int i = 0; i < kStateCount; i++) {
+//						printf("| ");
+//						for (int j = 0; j < kStateCount; j++)
+//						printf("%f ", A[j + i * kTransPaddedStateCount]);
+//						printf("|\n");
+//					}
+//					printf("\n");
+//
+//					for (int i = 0; i < kStateCount; i++) {
+//						printf("| ");
+//						for (int j = 0; j < kStateCount; j++)
+//						printf("%f ", B[j + i * kTransPaddedStateCount]);
+//						printf("|\n");
+//					}
+//					printf("\n");
+//
+//					for (int i = 0; i < kStateCount; i++) {
+//						printf("| ");
+//						for (int j = 0; j < kStateCount; j++)
+//						printf("%f ", C[j + i * kTransPaddedStateCount]);
+//						printf("|\n");
+//					}
+//					printf("\n");
+			////////////////
 
 	}//END: u loop
 
@@ -741,8 +754,9 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 	fprintf(stderr, "\t Leaving BeagleCPUImpl::convolveTransitionMatrices \n");
 #endif
 
-	return BEAGLE_SUCCESS;
+	return returnCode;
 }//END: convolveTransitionMatrices
+
 
 BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::updateTransitionMatrices(int eigenIndex,
