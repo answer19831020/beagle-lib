@@ -678,7 +678,7 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 		int count) {
 
 #ifdef BEAGLE_DEBUG_FLOW
-	   fprintf(stderr, "\t Entering BeagleCPUImpl::convolveTransitionMatrices \n");
+	fprintf(stderr, "\t Entering BeagleCPUImpl::convolveTransitionMatrices \n");
 #endif
 
 	for (int u = 0; u < count; u++) {
@@ -689,28 +689,56 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 
 		int n = 0;
 		for (int l = 0; l < kCategoryCount; l++) {
+
 			for (int i = 0; i < kStateCount; i++) {
 				for (int j = 0; j < kStateCount; j++) {
 
 					REALTYPE sum = 0.0;
 					for (int k = 0; k < kStateCount; k++)
 
-					sum += A[k + kStateCount * i] * B[j + kStateCount * k];
+					sum += A[k + kTransPaddedStateCount * i] * B[j + kTransPaddedStateCount * k];
 					C[n] = sum;
 					n++;
 
 				}//END: j loop
 
-//				if (T_PAD != 0) {
-//					n += T_PAD;
-//				}//END: padding check
+				if (T_PAD != 0) {
+					n += T_PAD;
+				}//END: padding check
 
 			}//END: i loop
 		}//END: l loop
+
+		///////////////
+		//		for (int i = 0; i < kStateCount; i++) {
+		//			printf("| ");
+		//			for (int j = 0; j < kStateCount; j++)
+		//			printf("%f ", A[j + i * kTransPaddedStateCount]);
+		//			printf("|\n");
+		//		}
+		//		printf("\n");
+		//
+		//		for (int i = 0; i < kStateCount; i++) {
+		//			printf("| ");
+		//			for (int j = 0; j < kStateCount; j++)
+		//			printf("%f ", B[j + i * kTransPaddedStateCount]);
+		//			printf("|\n");
+		//		}
+		//		printf("\n");
+		//
+		//		for (int i = 0; i < kStateCount; i++) {
+		//			printf("| ");
+		//			for (int j = 0; j < kStateCount; j++)
+		//			printf("%f ", C[j + i * kTransPaddedStateCount]);
+		//			printf("|\n");
+		//		}
+		//		printf("\n");
+		////////////////
+
 	}//END: u loop
 
 #ifdef BEAGLE_DEBUG_FLOW
-	   fprintf(stderr, "\t Leaving BeagleCPUImpl::convolveTransitionMatrices \n");
+	fprintf(stderr, "\t Leaving BeagleCPUImpl::convolveTransitionMatrices \n");
 #endif
 
 	return BEAGLE_SUCCESS;
