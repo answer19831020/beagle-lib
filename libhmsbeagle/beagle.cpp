@@ -697,7 +697,7 @@ int beagleConvolveTransitionMatrices(int instance,
 		                             const int* firstIndices,
 		                             const int* secondIndices,
 		                             const int* resultIndices,
-		                             const int count) {
+		                             const int matrixCount) {
 
 	beagle::BeagleImpl* beagleInstance = beagle::getBeagleInstance(instance);
 
@@ -706,7 +706,7 @@ int beagleConvolveTransitionMatrices(int instance,
 	} else {
 
 		return beagleInstance->convolveTransitionMatrices(firstIndices,
-				secondIndices, resultIndices, count);
+				secondIndices, resultIndices, matrixCount);
 
 	}
 

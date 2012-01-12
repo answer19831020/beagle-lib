@@ -1051,8 +1051,14 @@ int BeagleGPUImpl<BEAGLE_GPU_GENERIC>::convolveTransitionMatrices(const int* fir
 
 		for(int u = 0; u < matrixCount; u++) {
 			if(firstIndices[u] == resultIndices[u] || secondIndices[u] == resultIndices[u]) {
+
+#ifdef BEAGLE_DEBUG_FLOW
 				fprintf(stderr, "In-place convolution is not allowed \n");
+#endif
+
 				returnCode = BEAGLE_ERROR_GENERAL;
+				break;
+
 			}//END: overwrite check
 		}//END: u loop
 

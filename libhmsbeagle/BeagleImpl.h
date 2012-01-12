@@ -105,7 +105,7 @@ public:
 	virtual int convolveTransitionMatrices(const int* firstIndices,
 			                               const int* secondIndices,
 	                                       const int* resultIndices,
-	                                       int count) = 0;
+	                                       int matrixCount) = 0;
 
     virtual int updateTransitionMatrices(int eigenIndex,
                                          const int* probabilityIndices,

@@ -465,13 +465,13 @@ BEAGLE_DLLEXPORT int beagleSetPatternWeights(int instance,
  *                                   to convolve (input)
  * @param resultIndices             List of indices of resulting transition probability matrices 
  *                                   (input)
- * @param count                     Lenght of lists
+ * @param matrixCount               Length of lists
  */
 BEAGLE_DLLEXPORT int beagleConvolveTransitionMatrices(int instance,
                                     const int* firstIndices,
                                     const int* secondIndices,
                                     const int* resultIndices,
-		                            int count);
+		                            int matrixCount);
 
 /**
  * @brief Calculate a list of transition probability matrices
