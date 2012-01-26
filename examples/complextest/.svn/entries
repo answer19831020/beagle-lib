@@ -1,9 +1,9 @@
 10
 
 dir
-1053
-http://beagle-lib.googlecode.com/svn/trunk/examples/complextest
-http://beagle-lib.googlecode.com/svn
+1057
+https://beagle-lib.googlecode.com/svn/trunk/examples/complextest
+https://beagle-lib.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2011-09-20T13:55:02.090560Z
+2012-01-26T10:00:52.685737Z
 03dc3d8b0c069debb9ef666600c7c4e0
 2009-09-29T00:22:50.269637Z
 521
@@ -66,7 +66,7 @@ file
 
 
 
-2011-09-20T13:55:02.094560Z
+2012-01-26T10:00:52.685737Z
 2076b5971220a7e41052e77eb3906cd1
 2009-10-20T01:39:26.004937Z
 590
@@ -100,7 +100,7 @@ file
 
 
 
-2011-09-20T13:55:02.094560Z
+2012-01-26T10:00:52.685737Z
 66180deee19c74a124bcd44f1b843441
 2010-08-17T00:17:49.260262Z
 835
@@ -134,7 +134,7 @@ file
 
 
 
-2011-09-20T13:55:02.094560Z
+2012-01-26T10:00:52.685737Z
 f0ca2cd6175a76132cd784a1b025a80a
 2010-10-19T22:29:24.569231Z
 952

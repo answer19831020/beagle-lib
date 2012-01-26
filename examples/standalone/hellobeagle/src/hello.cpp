@@ -167,6 +167,6 @@ int main(int argc, char* argv[]){
 	                            &logL);         // outLogLikelihoods
 
 	cout << "logL = " << logL << "\n\n";
-	cout << "Woof!!\n";
+	cout << "Woof!\n";
 	return 0;
 }

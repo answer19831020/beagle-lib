@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 41
-/svn/!svn/ver/1015/trunk/libhmsbeagle/CPU
+/svn/!svn/ver/1055/trunk/libhmsbeagle/CPU
 END
 Precision.h
 K 25
@@ -73,7 +73,7 @@ BeagleCPUSSEPlugin.cpp
 K 25
 svn:wc:ra_dav:version-url
 V 64
-/svn/!svn/ver/1008/trunk/libhmsbeagle/CPU/BeagleCPUSSEPlugin.cpp
+/svn/!svn/ver/1055/trunk/libhmsbeagle/CPU/BeagleCPUSSEPlugin.cpp
 END
 BeagleCPUOpenMPPlugin.cpp
 K 25
@@ -96,8 +96,8 @@ END
 Makefile.am
 K 25
 svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/963/trunk/libhmsbeagle/CPU/Makefile.am
+V 53
+/svn/!svn/ver/1054/trunk/libhmsbeagle/CPU/Makefile.am
 END
 EigenDecompositionCube.h
 K 25

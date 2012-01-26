@@ -1,9 +1,9 @@
 10
 
 dir
-1053
-http://beagle-lib.googlecode.com/svn/trunk/project/beagle-vs/libhmsbeagle-cuda
-http://beagle-lib.googlecode.com/svn
+1057
+https://beagle-lib.googlecode.com/svn/trunk/project/beagle-vs/libhmsbeagle-cuda
+https://beagle-lib.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2011-09-20T13:55:01.950559Z
+2012-01-26T10:00:51.885718Z
 f033d87db3dbd285e9aa22662c5c6b0f
 2010-10-05T19:19:56.738586Z
 913
@@ -66,7 +66,7 @@ file
 
 
 
-2011-09-20T13:55:01.950559Z
+2012-01-26T10:00:51.885718Z
 80d45d4e841ecb8740a781d90f0aab32
 2010-07-09T23:03:46.462311Z
 795
@@ -100,7 +100,7 @@ file
 
 
 
-2011-09-20T13:55:01.950559Z
+2012-01-26T10:00:51.885718Z
 14e4b0eb1b66568b55ba871651df0e44
 2010-10-05T22:22:43.964826Z
 918
@@ -134,7 +134,7 @@ file
 
 
 
-2011-09-20T13:55:01.950559Z
+2012-01-26T10:00:51.885718Z
 6e2a420a9de034deef4cd8fff1f63b3c
 2011-06-21T00:38:58.117674Z
 1047

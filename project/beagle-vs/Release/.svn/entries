@@ -1,9 +1,9 @@
 10
 
 dir
-1053
-http://beagle-lib.googlecode.com/svn/trunk/project/beagle-vs/Release
-http://beagle-lib.googlecode.com/svn
+1057
+https://beagle-lib.googlecode.com/svn/trunk/project/beagle-vs/Release
+https://beagle-lib.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2011-09-20T13:55:01.818558Z
+2012-01-26T10:00:51.625712Z
 f6a85f3b0e30c96c993c69da6da6079e
 2010-07-17T00:41:29.965717Z
 814
@@ -66,7 +66,7 @@ file
 
 
 
-2011-09-20T13:55:01.818558Z
+2012-01-26T10:00:51.629712Z
 42ce4dbd016591c45bcb95524c6718dd
 2010-07-17T00:41:29.965717Z
 814

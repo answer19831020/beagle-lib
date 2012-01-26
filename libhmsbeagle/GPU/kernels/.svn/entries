@@ -1,9 +1,9 @@
 10
 
 dir
-1053
-http://beagle-lib.googlecode.com/svn/trunk/libhmsbeagle/GPU/kernels
-http://beagle-lib.googlecode.com/svn
+1057
+https://beagle-lib.googlecode.com/svn/trunk/libhmsbeagle/GPU/kernels
+https://beagle-lib.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2011-09-20T13:55:02.450561Z
+2012-01-26T10:00:53.413755Z
 a845dcd560983705f0619c37a371c5ec
 2011-06-16T19:31:18.728111Z
 1043
@@ -66,7 +66,7 @@ file
 
 
 
-2011-09-20T13:55:02.450561Z
+2012-01-26T10:00:53.413755Z
 b3044ec6e4cd28b3aa995f8f5aa15189
 2010-10-22T20:55:18.004529Z
 960
@@ -100,7 +100,7 @@ file
 
 
 
-2011-09-20T13:55:02.450561Z
+2012-01-26T10:00:53.413755Z
 7ac630bf4f23d0a9a9431eddcd3c85f3
 2010-08-16T23:48:34.683792Z
 834
@@ -134,7 +134,7 @@ file
 
 
 
-2011-09-20T13:55:02.454561Z
+2012-01-26T10:00:53.413755Z
 e579ca3ebcc60c8ba3648eb2a271f7cd
 2011-06-16T19:31:18.728111Z
 1043
@@ -168,7 +168,7 @@ file
 
 
 
-2011-09-20T13:55:02.454561Z
+2012-01-26T10:00:53.413755Z
 052880f33cb8f54f1319211130160c40
 2010-10-07T16:06:06.055665Z
 926

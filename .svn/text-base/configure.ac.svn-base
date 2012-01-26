@@ -15,7 +15,7 @@ GENERIC_API_VERSION=1
 AC_SUBST(GENERIC_API_VERSION)
 
 #revision version
-GENERIC_REVISION_VERSION=0
+GENERIC_REVISION_VERSION=1
 
 #release versioning
 GENERIC_MAJOR_VERSION=$GENERIC_API_VERSION
@@ -201,6 +201,8 @@ fi
 # ------------------------------------------------------------------------------
 # Setup SSE
 # ------------------------------------------------------------------------------
+
+AX_EXT
 
 AC_ARG_ENABLE(sse,
 	AC_HELP_STRING([--enable-sse],[build with sse implementation enabled @<:@default=yes@:>@]), , [enable_sse=yes])

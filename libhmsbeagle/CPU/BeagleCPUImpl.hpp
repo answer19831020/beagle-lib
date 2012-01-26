@@ -710,7 +710,7 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 					for (int k = 0; k < kStateCount; k++) {
 						sum += A[k + kTransPaddedStateCount * i] * B[j + kTransPaddedStateCount * k];
 					}
-					//						printf("%.30f %.30f %d: \n", C[n], sum, l);
+//					printf("%.30f %.30f %d: \n", C[n], sum, l);
 					C[n] = sum;
 					n++;
 
@@ -729,34 +729,41 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 			}//END: i loop
 
 			A += kStateCount * kTransPaddedStateCount;
-			B += kStateCount * kTransPaddedStateCount;;
-		}//END: l loop
+			B += kStateCount * kTransPaddedStateCount;
 
-		///////////////
-		//					for (int i = 0; i < kStateCount; i++) {
-		//						printf("| ");
-		//						for (int j = 0; j < kStateCount; j++)
-		//						printf("%f ", A[j + i * kTransPaddedStateCount]);
-		//						printf("|\n");
-		//					}
-		//					printf("\n");
-		//
-		//					for (int i = 0; i < kStateCount; i++) {
-		//						printf("| ");
-		//						for (int j = 0; j < kStateCount; j++)
-		//						printf("%f ", B[j + i * kTransPaddedStateCount]);
-		//						printf("|\n");
-		//					}
-		//					printf("\n");
-		//
-		//					for (int i = 0; i < kStateCount; i++) {
-		//						printf("| ");
-		//						for (int j = 0; j < kTransPaddedStateCount; j++)
-		//						printf("%f ", C[j + i * kTransPaddedStateCount]);
-		//						printf("|\n");
-		//					}
-		//					printf("\n");
-		////////////////
+
+			///////////////
+			//	    printf("rate category: %d \n", l);
+			//
+			//		printf("A:");
+			//		for (int i = 0; i < kStateCount; i++) {
+			//			printf("| ");
+			//			for (int j = 0; j < kStateCount; j++)
+			//			printf("%f ", A[j + i * kTransPaddedStateCount]);
+			//			printf("|\n");
+			//		}
+			//		printf("\n");
+			//
+			//		printf("A:");
+			//		for (int i = 0; i < kStateCount; i++) {
+			//			printf("| ");
+			//			for (int j = 0; j < kStateCount; j++)
+			//			printf("%f ", B[j + i * kTransPaddedStateCount]);
+			//			printf("|\n");
+			//		}
+			//		printf("\n");
+			//
+//						printf("C: \n");
+//						for (int i = 0; i < kStateCount; i++) {
+//							printf("| ");
+//							for (int j = 0; j < kTransPaddedStateCount; j++)
+//							printf("%.20f ", C[j + i * kTransPaddedStateCount]);
+//							printf("|\n");
+//						}
+//						printf("\n");
+			////////////////
+
+		}//END: rates loop
 
 	}//END: u loop
 

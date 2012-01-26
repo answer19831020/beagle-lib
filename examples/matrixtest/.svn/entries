@@ -1,9 +1,9 @@
 10
 
 dir
-1053
-http://beagle-lib.googlecode.com/svn/trunk/examples/matrixtest
-http://beagle-lib.googlecode.com/svn
+1057
+https://beagle-lib.googlecode.com/svn/trunk/examples/matrixtest
+https://beagle-lib.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2011-09-20T13:55:02.030559Z
+2012-01-26T10:00:52.525733Z
 2e31546b2634a61752dd4e03590b1654
 2010-08-17T00:17:49.260262Z
 835
@@ -66,7 +66,7 @@ file
 
 
 
-2011-09-20T13:55:02.030559Z
+2012-01-26T10:00:52.529734Z
 1845d93b2efefb77df110d3e7de8c435
 2010-10-19T22:29:24.569231Z
 952

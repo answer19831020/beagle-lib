@@ -1,9 +1,9 @@
 10
 
 dir
-1053
-http://beagle-lib.googlecode.com/svn/trunk/project/beagle-xcode/beagle-xcode.xcodeproj
-http://beagle-lib.googlecode.com/svn
+1057
+https://beagle-lib.googlecode.com/svn/trunk/project/beagle-xcode/beagle-xcode.xcodeproj
+https://beagle-lib.googlecode.com/svn
 
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2011-09-20T13:55:01.798558Z
+2012-01-26T10:00:51.577711Z
 69004b4f65094568069cb2201c4093c4
 2011-06-16T19:31:18.728111Z
 1043
