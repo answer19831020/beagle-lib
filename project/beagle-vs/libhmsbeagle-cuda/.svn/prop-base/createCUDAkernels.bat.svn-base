@@ -1,6 +1,0 @@
-K 13
-svn:mergeinfo
-V 146
-/branches/multi-state/project/beagle-vs2005/createCUDAkernels.bat:409-436
-/branches/scalingAPI/project/beagle-vs2005/createCUDAkernels.bat:289-297
-END

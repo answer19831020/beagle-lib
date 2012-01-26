@@ -1,9 +1,0 @@
-K 10
-svn:ignore
-V 57
-*.pbxuser
-*.perspectivev3
-xcuserdata
-project.xcworkspace
-
-END
