@@ -98,10 +98,6 @@ public:
     virtual int getTransitionMatrix(int matrixIndex,
                                     double* outMatrix) = 0;
 
-    ///////////////////////////
-    //---TODO: Epoch model---//
-    ///////////////////////////
-
 	virtual int convolveTransitionMatrices(const int* firstIndices,
 			                               const int* secondIndices,
 	                                       const int* resultIndices,
@@ -114,6 +110,13 @@ public:
                                          const double* edgeLengths,
                                          int count) = 0;
     
+    virtual int updateTransitionMatrices2(const int* eigenIndices,
+                                         const int* probabilityIndices,
+                                         const int* firstDerivativeIndices,
+                                         const int* secondDerivativeIndices,
+                                         const double* edgeLengths,
+                                         int count) = 0;
+
     virtual int updatePartials(const int* operations,
                                int operationCount,
                                int cumulativeScalingIndex) = 0;

@@ -187,6 +187,22 @@ public class BeagleJNIImpl implements Beagle {
         }
     }
 
+	public void updateTransitionMatrices2(final int[] eigenIndices,
+			                              final int[] probabilityIndices, 
+			                              final int[] firstDerivativeIndices,
+			                              final int[] secondDervativeIndices, 
+			                              final double[] edgeLengths,
+			                              int count) {
+		
+		int errCode = BeagleJNIWrapper.INSTANCE.updateTransitionMatrices2(
+				instance, eigenIndices, probabilityIndices,
+				firstDerivativeIndices, secondDervativeIndices, edgeLengths,
+				count);
+		
+		if (errCode != 0) {
+			throw new BeagleException("updateTransitionMatrices2", errCode);
+		}
+	}//END: updateTransitionMatrices2
 
     public void updatePartials(final int[] operations, final int operationCount, final int cumulativeScaleIndex) {
         int errCode = BeagleJNIWrapper.INSTANCE.updatePartials(instance, operations, operationCount, cumulativeScaleIndex);

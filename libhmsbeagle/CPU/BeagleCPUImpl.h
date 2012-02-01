@@ -194,10 +194,6 @@ public:
     int getTransitionMatrix(int matrixIndex,
     						double* outMatrix);
 
-    ///////////////////////////
-    //---TODO: Epoch model---//
-    ///////////////////////////
-
 	int convolveTransitionMatrices( const int* firstIndices,
             const int* secondIndices,
             const int* resultIndices,
@@ -210,6 +206,13 @@ public:
     // edgeLengths an array of expected lengths in substitutions per site
     // count the number of elements in the above arrays
     int updateTransitionMatrices(int eigenIndex,
+                                 const int* probabilityIndices,
+                                 const int* firstDerivativeIndices,
+                                 const int* secondDerivativeIndices,
+                                 const double* edgeLengths,
+                                 int count);
+
+    int updateTransitionMatrices2(const int* eigenIndices,
                                  const int* probabilityIndices,
                                  const int* firstDerivativeIndices,
                                  const int* secondDerivativeIndices,

@@ -350,10 +350,6 @@ JNIEXPORT jint JNICALL Java_beagle_BeagleJNIWrapper_getTransitionMatrix
 }
 
 
-///////////////////////////
-//---TODO: Epoch model---//
-///////////////////////////
-
 /*
  * Class:     beagle_BeagleJNIWrapper
  * Method:    convolveTransitionMatrices
@@ -410,6 +406,40 @@ JNIEXPORT jint JNICALL Java_beagle_BeagleJNIWrapper_updateTransitionMatrices
 
     return errCode;
 }
+
+/*
+ * Class:     beagle_BeagleJNIWrapper
+ * Method:    updateTransitionMatrices
+ * Signature: (II[I[I[I[DI)I
+ */
+JNIEXPORT jint JNICALL Java_beagle_BeagleJNIWrapper_updateTransitionMatrices2
+  (JNIEnv *env, jobject obj, jint instance, jintArray inEigenIndices, jintArray inProbabilityIndices, jintArray inFirstDerivativeIndices, jintArray inSecondDerivativeIndices, jdoubleArray inEdgeLengths, jint count)
+{
+    jint errCode;
+    jint *eigenIndices = env->GetIntArrayElements(inEigenIndices, NULL);
+    jint *probabilityIndices = env->GetIntArrayElements(inProbabilityIndices, NULL);
+    if (inFirstDerivativeIndices == NULL) {
+        jdouble *edgeLengths = env->GetDoubleArrayElements(inEdgeLengths, NULL);
+
+        errCode = (jint)beagleUpdateTransitionMatrices2(instance, (int *)eigenIndices, (int *)probabilityIndices, NULL, NULL, (double *)edgeLengths, count);
+
+        env->ReleaseDoubleArrayElements(inEdgeLengths, edgeLengths, JNI_ABORT);
+    } else {
+        jint *firstDerivativeIndices = env->GetIntArrayElements(inFirstDerivativeIndices, NULL);
+        jint *secondDerivativeIndices = env->GetIntArrayElements(inSecondDerivativeIndices, NULL);
+        jdouble *edgeLengths = env->GetDoubleArrayElements(inEdgeLengths, NULL);
+
+        errCode = (jint)beagleUpdateTransitionMatrices2(instance, (int *)eigenIndices, (int *)probabilityIndices, (int *)firstDerivativeIndices, (int *)secondDerivativeIndices, (double *)edgeLengths, count);
+
+        env->ReleaseDoubleArrayElements(inEdgeLengths, edgeLengths, JNI_ABORT);
+        env->ReleaseIntArrayElements(inSecondDerivativeIndices, secondDerivativeIndices, JNI_ABORT);
+        env->ReleaseIntArrayElements(inFirstDerivativeIndices, firstDerivativeIndices, JNI_ABORT);
+    }
+    env->ReleaseIntArrayElements(inProbabilityIndices, probabilityIndices, JNI_ABORT);
+    env->ReleaseIntArrayElements(inEigenIndices, eigenIndices, JNI_ABORT);
+
+    return errCode;
+}//END: Java_beagle_BeagleJNIWrapper_updateTransitionMatrices2
 
 /*
  * Class:     beagle_BeagleJNIWrapper
