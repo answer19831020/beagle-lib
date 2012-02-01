@@ -86,16 +86,7 @@ public class BeagleJNIWrapper {
 			                                     final int[] resultIndices, 
 			                                     int matrixCount);
     
-    public native int updateTransitionMatrices(int instance, 
-    		                                   int eigenIndex,
-                                               final int[] probabilityIndices,
-                                               final int[] firstDerivativeIndices,
-                                               final int[] secondDervativeIndices,
-                                               final double[] edgeLengths,
-                                               int count);
-    
-    public native int updateTransitionMatrices2(int instance, 
-    		                                   final int[] eigenIndices,
+    public native int updateTransitionMatrices(int instance, int eigenIndex,
                                                final int[] probabilityIndices,
                                                final int[] firstDerivativeIndices,
                                                final int[] secondDervativeIndices,

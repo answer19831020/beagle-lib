@@ -50,15 +50,6 @@ public:
                                  REALTYPE** transitionMatrices,
                                  int count);
 	
-    virtual void updateTransitionMatrices2(const int* eigenIndices,
-                                 const int* probabilityIndices,
-                                 const int* firstDerivativeIndices,
-                                 const int* secondDerivativeIndices,
-                                 const double* edgeLengths,
-                                 const double* categoryRates,
-                                 REALTYPE** transitionMatrices,
-                                 int count);
-
 };
 
 }

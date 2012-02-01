@@ -665,6 +665,10 @@ if (T_PAD != 0) {
     return BEAGLE_SUCCESS;
 }
 
+///////////////////////////
+//---TODO: Epoch model---//
+///////////////////////////
+
 //TODO: move to EigenDecompositionSquare
 
 BEAGLE_CPU_TEMPLATE
@@ -770,6 +774,7 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::convolveTransitionMatrices(const int* fir
 	return returnCode;
 }//END: convolveTransitionMatrices
 
+
 BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::updateTransitionMatrices(int eigenIndex,
                                             const int* probabilityIndices,
@@ -781,20 +786,6 @@ int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::updateTransitionMatrices(int eigenIndex,
 												  edgeLengths,gCategoryRates,gTransitionMatrices,count);
 	return BEAGLE_SUCCESS;
 }
-
-BEAGLE_CPU_TEMPLATE
-int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::updateTransitionMatrices2(const int* eigenIndices,
-                                            const int* probabilityIndices,
-                                            const int* firstDerivativeIndices,
-                                            const int* secondDerivativeIndices,
-                                            const double* edgeLengths,
-                                            int count) {
-
-	gEigenDecomposition->updateTransitionMatrices2(eigenIndices, probabilityIndices, firstDerivativeIndices, secondDerivativeIndices,
-												  edgeLengths, gCategoryRates, gTransitionMatrices, count);
-
-	return BEAGLE_SUCCESS;
-}//END: updateTransitionMatrices2
 
 BEAGLE_CPU_TEMPLATE
 int BeagleCPUImpl<BEAGLE_CPU_GENERIC>::updatePartials(const int* operations,

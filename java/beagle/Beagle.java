@@ -164,7 +164,7 @@ public interface Beagle {
      * @param firstIndices              List of indices of the first transition probability matrices to convolve (input)
      * @param secondIndices             List of indices of the second transition probability matrices to convolve (input)
      * @param resultIndices             List of indices of resulting transition probability matrices (input)
-     * @param matrixCount               Length of lists
+     * @param matrixCount               Lenght of lists
      */
     void convolveTransitionMatrices(
             final int[] firstIndices,
@@ -187,27 +187,6 @@ public interface Beagle {
      */
     void updateTransitionMatrices(
             int eigenIndex,
-            final int[] probabilityIndices,
-            final int[] firstDerivativeIndices,
-            final int[] secondDervativeIndices,
-            final double[] edgeLengths,
-            int count);
-    
-    /**
-     * Calculate a list of transition probability matrices
-     *
-     * This function calculates a list of transition probabilities matrices and their first and
-     * second derivatives (if requested) for a list of eigen-decomposition buffers.
-     *
-     * @param eigenIndex                List of indices of eigen-decomposition buffers (input)
-     * @param probabilityIndices        List of indices of transition probability matrices to update (input)
-     * @param firstDerivativeIndices    List of indices of first derivative matrices to update (input, NULL implies no calculation)
-     * @param secondDervativeIndices    List of indices of second derivative matrices to update (input, NULL implies no calculation)
-     * @param edgeLengths               List of edge lengths with which to perform calculations (input)
-     * @param count                     Length of lists
-     */
-    void updateTransitionMatrices2(
-    		final int[] eigenIndices,
             final int[] probabilityIndices,
             final int[] firstDerivativeIndices,
             final int[] secondDervativeIndices,

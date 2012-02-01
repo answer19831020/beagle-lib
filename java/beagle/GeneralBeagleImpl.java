@@ -215,14 +215,16 @@ public class GeneralBeagleImpl implements Beagle {
         System.arraycopy(this.matrices[matrixIndex],0,outMatrix,0,outMatrix.length);
     }
 
+    
+	// /////////////////////////
+	// ---TODO: Epoch model---//
+	// /////////////////////////
     public void convolveTransitionMatrices(
             final int[] firstIndices,
             final int[] secondIndices,
             final int[] resultIndices,
             int matrixCount) {
 
-    	//TODO: implement
-    	
 		for (int u = 0; u < matrixCount; u++) {
 			
 			  int firstIndex = firstIndices[u];
@@ -304,17 +306,6 @@ public class GeneralBeagleImpl implements Beagle {
         }
     }
 
-    public void updateTransitionMatrices2(final int[] eigenIndices,
-            final int[] probabilityIndices,
-            final int[] firstDerivativeIndices,
-            final int[] secondDervativeIndices,
-            final double[] edgeLengths,
-            final int count) {
-    	
-    	//TODO: implement
-    	
-    }//END: updateTransitionMatrices2
-    
     /**
      * Operations list is a list of 7-tuple integer indices, with one 7-tuple per operation.
      * Format of 7-tuple operation: {destinationPartials,
