@@ -183,10 +183,97 @@ if (T_PAD != 0) {
                 fprintf(stderr,"transitionMat[%d] = %.5f\n", w, transitionMat[w]);
         }
     }
-}
+}//END: updateTransitionMatrices
 
-}
-}
+BEAGLE_CPU_EIGEN_TEMPLATE
+void EigenDecompositionSquare<BEAGLE_CPU_EIGEN_GENERIC>::updateTransitionMatrices2(const int* eigenIndices,
+                                                        const int* probabilityIndices,
+                                                        const int* firstDerivativeIndices,
+                                                        const int* secondDerivativeIndices,
+                                                        const double* edgeLengths,
+                                                        const double* categoryRates,
+                                                        REALTYPE** transitionMatrices,
+                                                        int count) {
+
+    //TODO: optimize
+	for (int u = 0; u < count; u++) {
+
+		int eigenIndex = eigenIndices[u];
+
+		const REALTYPE* Ievc = gIMatrices[eigenIndex];
+		const REALTYPE* Evec = gEMatrices[eigenIndex];
+		const REALTYPE* Eval = gEigenValues[eigenIndex];
+		const REALTYPE* EvalImag = Eval + kStateCount;
+
+		REALTYPE* transitionMat = transitionMatrices[probabilityIndices[u]];
+		const double edgeLength = edgeLengths[u];
+		int n = 0;
+		for (int l = 0; l < kCategoryCount; l++) {
+			const REALTYPE distance = categoryRates[l] * edgeLength;
+			for(int i=0; i<kStateCount; i++) {
+				if (!isComplex || EvalImag[i] == 0) {
+					const REALTYPE tmp = exp(Eval[i] * distance);
+					for(int j=0; j<kStateCount; j++) {
+						matrixTmp[i*kStateCount+j] = Ievc[i*kStateCount+j] * tmp;
+					}
+				} else {
+					// 2 x 2 conjugate block
+					int i2 = i + 1;
+					const REALTYPE b = EvalImag[i];
+					const REALTYPE expat = exp(Eval[i] * distance);
+					const REALTYPE expatcosbt = expat * cos(b * distance);
+					const REALTYPE expatsinbt = expat * sin(b * distance);
+					for(int j=0; j<kStateCount; j++) {
+						matrixTmp[ i*kStateCount+j] = expatcosbt * Ievc[ i*kStateCount+j] +
+						expatsinbt * Ievc[i2*kStateCount+j];
+						matrixTmp[i2*kStateCount+j] = expatcosbt * Ievc[i2*kStateCount+j] -
+						expatsinbt * Ievc[ i*kStateCount+j];
+					}
+					i++; // processed two conjugate rows
+				}
+			}
+
+#ifdef DEBUG_COMPLEX
+			fprintf(stderr,"[");
+			for(int i=0; i<16; i++)
+			fprintf(stderr," %7.5e,",matrixTmp[i]);
+			fprintf(stderr,"] -- complex debug\n");
+			exit(0);
+#endif
+
+			for (int i = 0; i < kStateCount; i++) {
+				for (int j = 0; j < kStateCount; j++) {
+					REALTYPE sum = 0.0;
+					for (int k = 0; k < kStateCount; k++)
+					sum += Evec[i*kStateCount+k] * matrixTmp[k*kStateCount+j];
+					if (sum > 0)
+					transitionMat[n] = sum;
+					else
+					transitionMat[n] = 0;
+					n++;
+				}//END: kStateCount loop
+
+				if (T_PAD != 0) {
+					transitionMat[n] = 1.0;
+					n += T_PAD;
+				}//END: padding check
+
+			}//END: kStateCount loop
+		}//END: kCategoryCount loop
+
+		if (DEBUGGING_OUTPUT) {
+			int kMatrixSize = kStateCount * kStateCount;
+			fprintf(stderr,"transitionMat index=%d brlen=%.5f\n", probabilityIndices[u], edgeLengths[u]);
+			for ( int w = 0; w < (20 > kMatrixSize ? 20 : kMatrixSize); ++w)
+			fprintf(stderr,"transitionMat[%d] = %.5f\n", w, transitionMat[w]);
+		}//END: DEBUG check
+
+	}//END: count loop
+
+}//END: updateTransitionMatrices2
+
+}//END: namespace cpu
+}//END: namespace beagle
 
 #endif 
 

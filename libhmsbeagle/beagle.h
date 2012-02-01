@@ -447,11 +447,6 @@ BEAGLE_DLLEXPORT int beagleSetCategoryRates(int instance,
  */
 BEAGLE_DLLEXPORT int beagleSetPatternWeights(int instance,
                                        const double* inPatternWeights);
-    
-
-///////////////////////////
-//---TODO: Epoch model---//
-///////////////////////////
 
 /**
  * @brief Convolve lists of transition probability matrices
@@ -494,6 +489,33 @@ BEAGLE_DLLEXPORT int beagleConvolveTransitionMatrices(int instance,
  */
 BEAGLE_DLLEXPORT int beagleUpdateTransitionMatrices(int instance,
                                    int eigenIndex,
+                                   const int* probabilityIndices,
+                                   const int* firstDerivativeIndices,
+                                   const int* secondDerivativeIndices,
+                                   const double* edgeLengths,
+                                   int count);
+
+/**
+ * @brief Calculate a list of transition probability matrices
+ *
+ * This function calculates a list of transition probabilities matrices and their first and
+ * second derivatives (if requested).
+ *
+ * @param instance                  Instance number (input)
+ * @param eigenIndex                Index of eigen-decomposition buffer (input)
+ * @param probabilityIndices        List of indices of transition probability matrices to update
+ *                                   (input)
+ * @param firstDerivativeIndices    List of indices of first derivative matrices to update
+ *                                   (input, NULL implies no calculation)
+ * @param secondDerivativeIndices    List of indices of second derivative matrices to update
+ *                                   (input, NULL implies no calculation)
+ * @param edgeLengths               List of edge lengths with which to perform calculations (input)
+ * @param count                     Length of lists
+ *
+ * @return error code
+ */
+BEAGLE_DLLEXPORT int beagleUpdateTransitionMatrices2(int instance,
+                                   const int* eigenIndices,
                                    const int* probabilityIndices,
                                    const int* firstDerivativeIndices,
                                    const int* secondDerivativeIndices,
